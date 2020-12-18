@@ -7,7 +7,7 @@ const { doesNotReject } = require('assert');
 const app = express();
 
 
-const publicDirectory = path.join(__dirname, "public"); //root of our project
+const publicDirectory = path.join(__dirname, 'public'); //root of our project
 app.use(express.static(publicDirectory))
 
 const partials = path.join(__dirname, '/views/partials');
@@ -20,8 +20,11 @@ app.get('/contact', function(req,res){
 })
 
 app.get('/', function(req,res){
-    const temp = "50"
-    res.render('home', {t: temp})
+    res.render('index')
+})
+
+app.get('/elements', function(req,res){
+    res.render('elements')
 })
 
 app.listen(90)
@@ -35,9 +38,9 @@ app.get('/about', function(req,res){
     res.send("About us Page ");
 })
 
-app.get('/',function(req, res){
-    res.sendFile(__dirname + '/home.html')
-})
+// app.get('/',function(req, res){
+//     res.sendFile(__dirname + '/home.html')
+// })
 
 app.get('/student/:username', function(req,res){
     res.send(req.params.username)
